@@ -34,20 +34,20 @@ ul {
     padding-left: 0px;
 }
 
-#parkName{
+.parkName{
     font-family: 'Staatliches', cursive;
     font-size: 40px;
 
 }
 
-#address {
+.address {
     font-style: italic;
 }
 
-#officialWebsite {
+.officialWebsite {
     font-weight: bolder;
 }
 
-#officialWebsite:link    { color: #11403B;  }
-#officialWebsite:visited { color: #E9C46A;   }
-#officialWebsite:hover   { color: #EF476F; }
+.officialWebsite:link    { color: #11403B;  }
+.officialWebsite:visited { color: #E9C46A;   }
+.officialWebsite:hover   { color: #EF476F; }

@@ -9,14 +9,13 @@ function formatQueryParams(params) {
   }
 
 function displayResults(responseJson) {
-  console.log(responseJson);
   $('#results-list').empty();
   // iterate through the array
   for (let i = 0; i < responseJson.data.length; i++){
     $('#results-list').append(
-      `<li><h3 id="parkName">${responseJson.data[i].fullName}</h3>
+      `<li><h3 id="class">${responseJson.data[i].fullName}</h3>
       <p>${responseJson.data[i].description}</p>
-      <a href="${responseJson.data[i].url}" id="officialWebsite">Official Website</a>
+      <a href="${responseJson.data[i].url}" class="officialWebsite">Official Website</a>
       </li>`
     )};
   //display the results section  
@@ -24,7 +23,7 @@ function displayResults(responseJson) {
 };
 
 function getParks(query, maxResults) {
-    const apiFormat = "&api_key=" + apiKey
+  const apiFormat = "&api_key=" + apiKey
   const stateQuery = "?statecode=" + query + "&"
   const limitQuery = "limit=" + maxResults
     const params = {
@@ -34,7 +33,6 @@ function getParks(query, maxResults) {
     };
     const queryString = formatQueryParams(params)
     const url = searchURL + stateQuery + limitQuery + apiFormat;
-    console.log(url);
 
   fetch(url)
     .then(response => {
@@ -63,8 +61,15 @@ $(watchForm);
 /*
 this is what I was using for the addresses but it wasn't working since not all of the parks have official addresses.
 I guess I will have to figure out how to use coordinates?
-  <p id="address">${responseJson.data[i].addresses[0].line1}
+  <p class="address">
+      ${responseJson.data[i].addresses[0].stateCode}</p>
+      ${responseJson.data[i].addresses[0].line1}
       ${responseJson.data[i].addresses[0].postalCode}
       ${responseJson.data[i].addresses[0].city}
       ${responseJson.data[i].addresses[0].stateCode}</p>
+
+      I could use something like this:
+
+      <p>https://maps.googleapis.com/maps/api/geocode/json?address=statue+of+liberty,
+      +New+York+NY&key=YOUR_API_KEY</p>
 */
