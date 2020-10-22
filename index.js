@@ -16,10 +16,6 @@ function displayResults(responseJson) {
     $('#results-list').append(
       `<li><h3 id="parkName">${responseJson.data[i].fullName}</h3>
       <p>${responseJson.data[i].description}</p>
-      <p id="address">${responseJson.data[i].addresses[0].line1}
-      ${responseJson.data[i].addresses[0].postalCode}
-      ${responseJson.data[i].addresses[0].city}
-      ${responseJson.data[i].addresses[0].stateCode}</p>
       <a href="${responseJson.data[i].url}" id="officialWebsite">Official Website</a>
       </li>`
     )};
@@ -32,15 +28,12 @@ function getParks(query, maxResults) {
   const stateQuery = "?statecode=" + query + "&"
   const limitQuery = "limit=" + maxResults
     const params = {
-      /*q: query,
-      limit: maxResults,*/
       q: stateQuery,
       limit: limitQuery,
       api_key: apiKey
     };
     const queryString = formatQueryParams(params)
     const url = searchURL + stateQuery + limitQuery + apiFormat;
-    /*const url = searchURL + '?' + queryString;*/
     console.log(url);
 
   fetch(url)
@@ -66,3 +59,12 @@ function watchForm() {
 }
 
 $(watchForm);
+
+/*
+this is what I was using for the addresses but it wasn't working since not all of the parks have official addresses.
+I guess I will have to figure out how to use coordinates?
+  <p id="address">${responseJson.data[i].addresses[0].line1}
+      ${responseJson.data[i].addresses[0].postalCode}
+      ${responseJson.data[i].addresses[0].city}
+      ${responseJson.data[i].addresses[0].stateCode}</p>
+*/
