@@ -17,7 +17,7 @@ h2 {
     display: none;
   }
 
-input {
+input, #js-search-state {
     margin-bottom: 25px;
     background-color: #F2DCA6;
 }
